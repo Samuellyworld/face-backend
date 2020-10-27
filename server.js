@@ -40,5 +40,5 @@ app.put('/image', (req,res) => {image.handleImage(req,res,db)});
 
 
 app.listen(process.env.PORT || 3001, ()=> {
-	console.log(`app is working on port ${PORT}`);
+	console.log(`app is working on port ${process.env.PORT}`);
 });
