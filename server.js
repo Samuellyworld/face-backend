@@ -39,10 +39,10 @@ app.get('/profile/:id', (req,res) => {profile.handleProfile(req,res,db)});
 
 app.put('/image', (req,res) => {image.handleImage(req,res,db)});
 
-app.post('/imageUrl', (req,res) =>{image.handleApiCall(req,res)})
+app.post('/imageUrl', (req,res) =>{image.handleApicall(req,res)})
 
 
 
 app.listen(process.env.PORT || 3001, ()=> {
-	console.log(`heroku is working on port ${process.env.PORT}`);
+	console.log(`app is working on port ${process.env.PORT}`);
 });
