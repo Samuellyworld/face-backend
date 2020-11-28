@@ -1,4 +1,4 @@
-import Clarifai from 'clarifai';
+const Clarifai= require('clarifai');
 
 const app = new Clarifai.App({apiKey: '4e2138a283314954a9f2ac4e15c2cfa8'});
 
@@ -28,4 +28,3 @@ const handleApicall = (req,res) => {
 		handleApicall
 	};
 
-	
