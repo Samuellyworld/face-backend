@@ -39,7 +39,7 @@ app.get('/profile/:id', (req,res) => {profile.handleProfile(req,res,db)});
 
 app.put('/image', (req,res) => {image.handleImage(req,res,db)});
 
-app.post('/imageUrl', (req,res) =>{image.handleApicall(req,res)})
+app.post('/imageUrl', (req,res) =>{image.handleApicall(req,res)});
 
 
 
