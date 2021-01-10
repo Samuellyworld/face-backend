@@ -4,12 +4,13 @@ const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
 const Clarifai = require('clarifai');
-const helmet = require('helmet');
+const morgan = require('morgan');
 
 const signin = require('./controllers/signin.js');
 const register = require('./controllers/register.js');
 const profile = require('./controllers/profile.js');
 const image = require('./controllers/image.js');
+const auth = require('./controllers/authorization.js');
 
 const db = knex({
   client: 'pg',
@@ -22,26 +23,30 @@ const db = knex({
 });
 
 
-
-
 const app = express();
 app.use(bodyParser.json());
+app.use(morgan('combined'));
 app.use(cors());
-app.use(helmet());
 
 app.get('/', (req,res) => {
 	res.json('it is working');
+
 });
 
-app.post('/signin', (req,res) => {signin.handleSignin(req,res, bcrypt, db)});
+
+
+app.post('/signin', signin.signInAuthentication(db,bcrypt));
 
 app.post('/register', (req, res) => {register.handleRegister(req, res, bcrypt, db)});
 
-app.get('/profile/:id', (req,res) => {profile.handleProfile(req,res,db)});
+app.get('/profile/:id', auth.requireAuth, (req,res) => {profile.handleProfile(req,res,db)});
 
-app.put('/image', (req,res) => {image.handleImage(req,res,db)});
+app.post('/profile/:id', auth.requireAuth, (req,res) => {profile.handleProfileUpdate(req,res,db)});
 
 app.post('/imageUrl', (req,res) =>{image.handleApicall(req,res)});
+
+app.put('/image',  (req,res) => {image.handleImage(req,res,db)});
+
 
 
 
