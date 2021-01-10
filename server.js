@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
 const Clarifai = require('clarifai');
+const helmet = require('helmet');
 
 const signin = require('./controllers/signin.js');
 const register = require('./controllers/register.js');
@@ -26,6 +27,7 @@ const db = knex({
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
+app.use(helmet());
 
 app.get('/', (req,res) => {
 	res.json('it is working');

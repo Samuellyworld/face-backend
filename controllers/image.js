@@ -7,7 +7,7 @@ const handleApicall = (req,res) => {
 	     .then(data => {
 	     	res.json(data)
 	     })
-	     .catch(err => res.status(400).json('unable to work with API'))
+	     .catch(console.log('unable to work with api'))
 }
 
 
@@ -26,8 +26,8 @@ const handleImage = (req,res,db) => {
 			
 
 	module.exports = {
-		handleApicall,
-		handleImage
+		handleImage,
+		handleApicall
 		
 	};
 
