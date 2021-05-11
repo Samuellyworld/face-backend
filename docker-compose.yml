@@ -36,3 +36,5 @@ services:
       image: redis
       ports: 
          - "6379:6379"
+      environment: 
+        REDIS_URL: redis://redis:6379
