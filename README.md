@@ -5,7 +5,7 @@ backend api server to this - https://face-detection-a.herokuapp.com/
 
 ## local developement
 
-for local development, i integrated docker and dcoker compose  for easy and swift development rather than opening servers for each database used
+for local development, I integrated docker and docker compose  for easy and swift development rather than opening servers for each database used
 
 in other for this to work, in the `server.js` in the root folder
 
