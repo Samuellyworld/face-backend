@@ -1,0 +1,38 @@
+version: "3.8"
+
+services: 
+
+
+     # Express Server
+    smart-brain-backend : 
+       container_name: backend
+       build: ./
+       command: npm start
+       working_dir: /usr/src/smart-brain-facebackend
+       environment: 
+          POSTGRES_URI : postgres://postgres:aspirin@postgres:5432/smart-docker
+       links:
+          - db
+          - redis 
+       ports: 
+        - "3000:3000"
+       volumes: 
+        - ./:/usr/src/smart-brain-facebackend
+        
+
+      # Postgres
+    db: 
+       environment: 
+          POSTGRES_USER : postgres
+          POSTGRES_PASSWORD: aspirin
+          POSTGRES_DB: smart-docker
+          POSTGRES_HOST: postgres
+       build: ./postgres
+       ports:
+           - "5432:5432"
+
+      #Redis
+    redis:
+      image: redis
+      ports: 
+         - "6379:6379"
