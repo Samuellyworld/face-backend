@@ -23,9 +23,9 @@ services:
       # Postgres
     db: 
        environment: 
-          POSTGRES_USER : postgres
-          POSTGRES_PASSWORD: aspirin
-          POSTGRES_DB: smart-docker
+          POSTGRES_USER : ''
+          POSTGRES_PASSWORD: ''
+          POSTGRES_DB: ''
           POSTGRES_HOST: postgres
        build: ./postgres
        ports:
